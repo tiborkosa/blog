@@ -1,0 +1,98 @@
+/api/about  (all passes)
+    URL: /
+        POST  (auth passed) 
+            input:  body
+            output: {message: "ok"}
+    URL: /:id
+        GET (passed)
+            input: userid
+            output: 
+                userid:{image,first_name,last_name,username, email, age}, body, publish_date
+        PUT  (auth passed)
+            input: body
+            output: {message: "ok"}
+
+/api/blog
+
+Blogs
+    /
+    GET (tested passed)
+        input:
+        output:
+            data:[_id, desc, published,image, date, {author: _id, image,username},
+             title, numComments, numLikes, categories: [{categories}]
+            about: {about/origin}
+    POST  (auth passed)
+        input:
+            author, title, desc, body, image, [tags],[categories]
+        output:
+            "message": "ok"    
+
+    /:id
+    PUT  (auth passed)
+        input:
+            author, title, desc, body, image, [tags],[categories]
+        output:
+            "message": "ok"  
+
+    DELETE  (auth passed)
+        input: id
+        output:  "message": "ok"  
+
+    GET (tested passed)
+        input: id
+        output:
+            input:
+            _id, {author: _id, image,username}, title, desc, body, image, publish_date, create_date, [tags],[categories]
+
+    Like
+    /like
+    POST  (auth passed)
+        input:  blogid
+        output: added like object
+    /:id
+    DELETE  (auth passed)
+        input: id (blogid)
+        output: deleted like object
+
+
+    Comment
+    /comment 
+    POST  (auth passed)
+        input: userid,blogid,comment
+        output: "message": "ok"
+    GET passed 
+        // gets the paged comments [10/req] sorted by date
+        input: blogid, start
+        output: _id,{userid: username, image}, comment
+    /:id
+    PUT  (auth passed)
+        input: id,comment
+        output: "message": "ok"
+    DELETE  (auth passed)
+        input: id
+        output: "message": "ok"
+
+Search
+    /search
+    GET passed 
+        input: searchTag || searchCat || searchTitle
+        output: [_id, desc, published, image, date, {author: _id, username, image}, title, numComments, numLikes]
+    
+Image
+    /image
+    /single_upload
+    POST     (auth passed)
+        input: files [jpeg,png] 
+            Saves 3 files width sizes [100, 600, 900]
+        output: filename
+    /multi_upload
+        disabled for now
+    /delete/filename
+        input: filename
+            will delete all 3 files
+        output:
+         "message":"ok"
+
+This is the image url:
+    http://res.cloudinary.com/ddhjotycm/image/upload/v1553386367
