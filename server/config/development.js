@@ -7,13 +7,13 @@ module.exports = {
 		jwt: process.env.JWT || 'secret'
 	},
 	cloud_img : {
-		cloud_name: "ddhjotycm", 
-    	api_key: "927882151976859", 
-		api_secret: "UQxYnRTlB9YglB0AAJcfxJVH1bo",
+		cloud_name: "", 
+    	api_key: "", 
+		api_secret: "",
 		url: "https://res/cloudinary.com"
 	},
 	email:{
-		USER: "tuzpenge.web",
-		PASS:"Vviking28"
+		USER: "",
+		PASS:""
 	}
 };
